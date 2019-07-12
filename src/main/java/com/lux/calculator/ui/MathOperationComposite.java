@@ -16,9 +16,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import com.lux.calculator.logic.Calculations;
-import com.lux.calculator.logic.MathData;
 import com.lux.calculator.logic.MathOperation;
 import com.lux.calculator.logic.SimpleCalculatorImpl;
+import com.lux.calculator.model.MathModel;
 
 public class MathOperationComposite extends Composite {
 
@@ -28,7 +28,7 @@ public class MathOperationComposite extends Composite {
 
 	private static final String[] items = new String[] { "+", "-", "/", "*" };
 
-	private MathData mathData;
+	private MathModel mathData;
 
 	private Text firstNumber;
 	private Combo mathOperator;
@@ -47,7 +47,7 @@ public class MathOperationComposite extends Composite {
 		createContent(parent);
 		initActions();
 
-		mathData = new MathData();
+		mathData = new MathModel();
 		calculation = new Calculations(new SimpleCalculatorImpl());
 		mathData.registerObserver(calculation);
 	}

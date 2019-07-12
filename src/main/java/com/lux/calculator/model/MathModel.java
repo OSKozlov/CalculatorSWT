@@ -1,13 +1,15 @@
-package com.lux.calculator.logic;
+package com.lux.calculator.model;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class MathData implements Observable {
+import com.lux.calculator.listener.MathModelChangeListener;
+
+public class MathModel {
 	
-	private List<Observer> observers;
+	private List<MathModelChangeListener> observers;
 	
     private Double firstOperand;
     private Double secondOperand;
@@ -16,26 +18,23 @@ public class MathData implements Observable {
     private boolean isPressedBtnCalculate;
 
 
-	@Override
-	public void registerObserver(Observer o) {
+	public void registerObserver(MathModelChangeListener o) {
 		observers.add(o);
 	}
 
-	@Override
-	public void removeObserver(Observer o) {
+	public void removeObserver(MathModelChangeListener o) {
 		observers.remove(o);
 	}
 
-	@Override
 	public void notifyObservers(Map params) {
 		if (!isValid()) return;
-		for(Observer observer : observers) {
+		for(MathModelChangeListener observer : observers) {
 			observer.update(params);
 		}
 	}
 	
 
-	public List<Observer> getObservers() {
+	public List<MathModelChangeListener> getObservers() {
 		return observers;
 	}
 
@@ -67,7 +66,7 @@ public class MathData implements Observable {
 		notifyObservers(getParams());
 	}
 
-	public MathData() {
+	public MathModel() {
 		observers = new LinkedList<>();
 	}
 	

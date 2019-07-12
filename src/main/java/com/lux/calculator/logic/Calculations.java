@@ -2,9 +2,11 @@ package com.lux.calculator.logic;
 
 import java.util.Map;
 
+import com.lux.calculator.listener.MathModelChangeListener;
+import com.lux.calculator.model.MathModel;
 import com.lux.calculator.ui.CalculatorComposite;
 
-public class Calculations implements Observer {
+public class Calculations implements MathModelChangeListener {
 
 	private double firstNumber;
 	private String mathOperator;
@@ -12,7 +14,7 @@ public class Calculations implements Observer {
 	private double result;
 	private boolean isflyModeOn;
 
-	private MathData mathData;
+	private MathModel mathData;
 	private AbstractCalculator calculator;
 
 	public Calculations(AbstractCalculator calculator) {
