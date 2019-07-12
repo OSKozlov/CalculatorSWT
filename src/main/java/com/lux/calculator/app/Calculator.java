@@ -1,13 +1,18 @@
-package com.lux.calculator.logic;
+package com.lux.calculator.app;
 
-public class SimpleCalculatorImpl extends AbstractCalculator {
+import org.eclipse.swt.widgets.Shell;
 
-    public SimpleCalculatorImpl() {
+import com.lux.calculator.logic.MathOperation;
+import com.lux.calculator.ui.CalculatorComposite;
+
+public class Calculator extends AbstractCalculator {
+
+    public Calculator() {
         creatOperationsMap();
     }
 
     @Override
-    public double makeCalculation(double firstNumber, double secondNumber, String mathOperator) {
+    public double doCalculation(double firstNumber, double secondNumber, String mathOperator) {
         MathOperation mathOperation = null;
 
         if (mathOperationsMap.containsKey(mathOperator)) {
@@ -22,5 +27,10 @@ public class SimpleCalculatorImpl extends AbstractCalculator {
     @Override
     public void creatOperationsMap() {
         mathOperationsMap = creatMainOperationsMap();
+    }
+
+    @Override
+    public void runUI(Shell shell) {
+        CalculatorComposite calculatorComposite = new CalculatorComposite(shell);
     }
 }

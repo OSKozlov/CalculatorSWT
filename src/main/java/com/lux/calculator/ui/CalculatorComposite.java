@@ -7,8 +7,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.lux.calculator.app.Main;
-
 public class CalculatorComposite extends Composite {
 
 	private static final String TITLE_CALCULATOR = "Calculator";
@@ -21,17 +19,9 @@ public class CalculatorComposite extends Composite {
 	private MathOperationComposite mathOperationPanel;
 	private HistoryComposite historyPanel;
 	
-	private static CalculatorComposite instance;
-
-	private CalculatorComposite(Composite parent) {
+	public CalculatorComposite(Composite parent) {
 		super(parent, SWT.BORDER);		
 		createContent(parent);
-	}
-	
-	public static CalculatorComposite getInstance() {
-		if (instance == null)
-            instance = new CalculatorComposite(Main.getShell());
-        return instance;
 	}
 	
 	private void createContent(Composite parent) {

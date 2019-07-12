@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.lux.calculator.logic.SimpleCalculatorImpl;
+import com.lux.calculator.app.Calculator;
 
 public class SimpleCalculatorImplTest {
 
@@ -23,9 +23,9 @@ public class SimpleCalculatorImplTest {
 //		double expResult3 = 0.8;
 //		double expResult4 = 20;
 		
-		SimpleCalculatorImpl calc = new SimpleCalculatorImpl();
+		Calculator calc = new Calculator();
 		
-		double result1 = calc.makeCalculation(firstNumber, secondNumber, mathOperator1);
+		double result1 = calc.doCalculation(firstNumber, secondNumber, mathOperator1);
 //		double result2 = calc.makeCalculation(firstNumber, secondNumber, mathOperator2);
 //		double result3 = calc.makeCalculation(firstNumber, secondNumber, mathOperator3);
 //		double result4 = calc.makeCalculation(firstNumber, secondNumber, mathOperator4);

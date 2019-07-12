@@ -1,12 +1,22 @@
-package com.lux.calculator.logic;
+package com.lux.calculator.app;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.eclipse.swt.widgets.Shell;
+
+import com.lux.calculator.logic.MathOperation;
+import com.lux.calculator.logic.MathOperationAdd;
+import com.lux.calculator.logic.MathOperationDevision;
+import com.lux.calculator.logic.MathOperationMultiplication;
+import com.lux.calculator.logic.MathOperationSubtraction;
 
 public abstract class AbstractCalculator {
 
 	protected Map<String, MathOperation> mathOperationsMap;
 
+	public abstract void runUI(Shell shell);
+	
 	/**
 	 * 
 	 * @param firstNumber
@@ -17,7 +27,7 @@ public abstract class AbstractCalculator {
 	 *            - a sign that denotes a mathematical action with numbers
 	 * @return result of operation
 	 */
-	public abstract double makeCalculation(double firstNumber, double secondNumber, String sign);
+	public abstract double doCalculation(double firstNumber, double secondNumber, String sign);
 
 	public abstract void creatOperationsMap();
 

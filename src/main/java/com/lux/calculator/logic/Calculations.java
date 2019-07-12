@@ -2,6 +2,7 @@ package com.lux.calculator.logic;
 
 import java.util.Map;
 
+import com.lux.calculator.app.AbstractCalculator;
 import com.lux.calculator.listener.MathModelChangeListener;
 import com.lux.calculator.model.MathModel;
 import com.lux.calculator.ui.CalculatorComposite;
@@ -28,18 +29,18 @@ public class Calculations implements MathModelChangeListener {
 		this.mathOperator = (String) params.get("sign");
 		this.secondNumber = (double) params.get("secondOperand");
 		
-		this.result = calculator.makeCalculation(firstNumber, secondNumber, mathOperator);
+		this.result = calculator.doCalculation(firstNumber, secondNumber, mathOperator);
 		setResultIntoResultField(result);
 		setResultIntoHistory(result);
 	}
 	
 	private void setResultIntoResultField(double result) {
-		CalculatorComposite.getInstance().getMathOperationPanel().updateResultField(String.valueOf(result));
+//		CalculatorComposite.getInstance().getMathOperationPanel().updateResultField(String.valueOf(result));
 	}
 	
 	private void setResultIntoHistory(double result) {
-		CalculatorComposite.getInstance().getHistoryPanel()
-		.addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
+//		CalculatorComposite.getInstance().getHistoryPanel()
+//		.addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
 	}
 	
 

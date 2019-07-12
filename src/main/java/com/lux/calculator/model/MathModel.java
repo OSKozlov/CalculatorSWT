@@ -13,9 +13,11 @@ public class MathModel {
 	
     private Double firstOperand;
     private Double secondOperand;
-    private String sign;
+
     private boolean isOnFlyMode;
     private boolean isPressedBtnCalculate;
+    
+    private String sign;
 
 
 	public void registerObserver(MathModelChangeListener o) {

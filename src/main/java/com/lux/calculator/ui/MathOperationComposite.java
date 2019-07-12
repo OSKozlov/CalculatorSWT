@@ -15,9 +15,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
+import com.lux.calculator.app.Calculator;
 import com.lux.calculator.logic.Calculations;
 import com.lux.calculator.logic.MathOperation;
-import com.lux.calculator.logic.SimpleCalculatorImpl;
 import com.lux.calculator.model.MathModel;
 
 public class MathOperationComposite extends Composite {
@@ -30,16 +30,19 @@ public class MathOperationComposite extends Composite {
 
 	private MathModel mathData;
 
-	private Text firstNumber;
-	private Combo mathOperator;
-	private Text secondNumber;
-	private Button checkBoxOnFlyMode;
-	private Label labelCalcOnTheFly;
-	private Button btnCalculate;
-	private Label labelResult;
-	private Text textResult;
+    private Text firstNumber;
+    private Text secondNumber;
+    private Text textResult;
 
-	private Calculations calculation;
+    private Label labelCalcOnTheFly;
+    private Label labelResult;
+
+    private Combo mathOperator;
+
+    private Button checkBoxOnFlyMode;
+    private Button btnCalculate;
+
+    private Calculations calculation;
 
 	public MathOperationComposite(Composite parent) {
 		super(parent, SWT.NONE);
@@ -48,7 +51,7 @@ public class MathOperationComposite extends Composite {
 		initActions();
 
 		mathData = new MathModel();
-		calculation = new Calculations(new SimpleCalculatorImpl());
+		calculation = new Calculations(new Calculator());
 		mathData.registerObserver(calculation);
 	}
 
