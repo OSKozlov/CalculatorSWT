@@ -1,7 +1,8 @@
-package com.muntian.logic;
+package com.lux.calculator.logic;
 
 import java.util.Map;
-import com.muntian.ui.MainPanel;
+
+import com.lux.calculator.ui.CalculatorComposite;
 
 public class Calculations implements Observer {
 
@@ -31,11 +32,11 @@ public class Calculations implements Observer {
 	}
 	
 	private void setResultIntoResultField(double result) {
-		MainPanel.getInstance().getMathOperationPanel().updateResultField(String.valueOf(result));
+		CalculatorComposite.getInstance().getMathOperationPanel().updateResultField(String.valueOf(result));
 	}
 	
 	private void setResultIntoHistory(double result) {
-		MainPanel.getInstance().getHistoryPanel()
+		CalculatorComposite.getInstance().getHistoryPanel()
 		.addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
 	}
 	

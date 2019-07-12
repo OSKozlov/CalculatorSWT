@@ -1,4 +1,4 @@
-package com.muntian.logic;
+package com.lux.calculator.logic;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 //import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.lux.calculator.logic.MathOperationAdd;
 
 public class MathOperationAddTest {
 

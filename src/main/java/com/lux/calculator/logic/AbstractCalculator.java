@@ -1,4 +1,4 @@
-package com.muntian.logic;
+package com.lux.calculator.logic;
 
 import java.util.HashMap;
 import java.util.Map;

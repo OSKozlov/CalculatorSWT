@@ -1,4 +1,4 @@
-package com.muntian.ui;
+package com.lux.calculator.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -7,9 +7,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.muntian.Main;
+import com.lux.calculator.app.Main;
 
-public class MainPanel extends Composite {
+public class CalculatorComposite extends Composite {
 
 	private static final String TITLE_CALCULATOR = "Calculator";
 	private static final String TITLE_HISTORY = "History";
@@ -18,24 +18,24 @@ public class MainPanel extends Composite {
 	private CTabItem tabItemCalc;
 	private CTabItem tabItemHistory;
 	
-	private MathOperationPanel mathOperationPanel;
-	private HistoryPanel historyPanel;
+	private MathOperationComposite mathOperationPanel;
+	private HistoryComposite historyPanel;
 	
-	private static MainPanel instance;
+	private static CalculatorComposite instance;
 
-	private MainPanel(Composite parent) {
+	private CalculatorComposite(Composite parent) {
 		super(parent, SWT.BORDER);		
 		createContent(parent);
 	}
 	
-	public static MainPanel getInstance() {
+	public static CalculatorComposite getInstance() {
 		if (instance == null)
-            instance = new MainPanel(Main.getShell());
+            instance = new CalculatorComposite(Main.getShell());
         return instance;
 	}
 	
 	private void createContent(Composite parent) {
-		tabFolder=new CTabFolder(MainPanel.this, SWT.BORDER);
+		tabFolder=new CTabFolder(CalculatorComposite.this, SWT.BORDER);
 		GridLayout gridLayout = new GridLayout(1,false);
 		tabFolder.setLayout(gridLayout);
 		
@@ -43,25 +43,25 @@ public class MainPanel extends Composite {
 		tabFolder.setLayoutData(gridData);
 		tabFolder.setSize(280, 280);
 
-		mathOperationPanel = new MathOperationPanel(tabFolder);
+		mathOperationPanel = new MathOperationComposite(tabFolder);
 		
 		tabItemCalc=new CTabItem(tabFolder,SWT.NONE);
 		tabItemCalc.setText(TITLE_CALCULATOR);
 		tabItemCalc.setControl(mathOperationPanel);
 	
 		
-		historyPanel = new HistoryPanel(tabFolder);
+		historyPanel = new HistoryComposite(tabFolder);
 		
 		tabItemHistory=new CTabItem(tabFolder,SWT.NONE);
 		tabItemHistory.setText(TITLE_HISTORY);
 		tabItemHistory.setControl(historyPanel);
 	}
 
-	public MathOperationPanel getMathOperationPanel() {
+	public MathOperationComposite getMathOperationPanel() {
 		return mathOperationPanel;
 	}
 
-	public HistoryPanel getHistoryPanel() {
+	public HistoryComposite getHistoryPanel() {
 		return historyPanel;
 	}
 }

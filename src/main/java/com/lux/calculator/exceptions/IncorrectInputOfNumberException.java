@@ -1,4 +1,4 @@
-package com.muntian.exceptions;
+package com.lux.calculator.exceptions;
 
 public class IncorrectInputOfNumberException extends IllegalArgumentException {
 	

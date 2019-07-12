@@ -1,4 +1,4 @@
-package com.muntian.ui;
+package com.lux.calculator.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -15,12 +15,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import com.muntian.logic.Calculations;
-import com.muntian.logic.MathData;
-import com.muntian.logic.MathOperation;
-import com.muntian.logic.SimpleCalculatorImpl;
+import com.lux.calculator.logic.Calculations;
+import com.lux.calculator.logic.MathData;
+import com.lux.calculator.logic.MathOperation;
+import com.lux.calculator.logic.SimpleCalculatorImpl;
 
-public class MathOperationPanel extends Composite {
+public class MathOperationComposite extends Composite {
 
 	private static final String RESULT = "Result:";
 	private static final String CALCULATE = "Calculate";
@@ -41,7 +41,7 @@ public class MathOperationPanel extends Composite {
 
 	private Calculations calculation;
 
-	public MathOperationPanel(Composite parent) {
+	public MathOperationComposite(Composite parent) {
 		super(parent, SWT.NONE);
 
 		createContent(parent);

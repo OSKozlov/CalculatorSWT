@@ -1,8 +1,10 @@
-package com.muntian.logic;
+package com.lux.calculator.logic;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.lux.calculator.logic.MathOperationDevision;
 
 public class MathOperationDevisionTest {
 

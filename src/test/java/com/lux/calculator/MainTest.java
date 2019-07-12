@@ -1,4 +1,4 @@
-package com.muntian;
+package com.lux.calculator;
 
 import static org.junit.Assert.*;
 

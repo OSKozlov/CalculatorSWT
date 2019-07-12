@@ -1,11 +1,11 @@
-package com.muntian;
+package com.lux.calculator.app;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.muntian.ui.MainPanel;
+import com.lux.calculator.ui.CalculatorComposite;
 
 public class Main {
 	
@@ -26,7 +26,7 @@ public class Main {
 		GridLayout gridLayout = new GridLayout();
 		shell.setLayout(gridLayout);
 		
-		MainPanel mainPanel = MainPanel.getInstance();
+		CalculatorComposite mainPanel = CalculatorComposite.getInstance();
 
 		shell.setLocation(750, 200);
 		shell.pack();

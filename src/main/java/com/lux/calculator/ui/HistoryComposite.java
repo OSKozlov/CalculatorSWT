@@ -1,4 +1,4 @@
-package com.muntian.ui;
+package com.lux.calculator.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -9,13 +9,13 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 
-public class HistoryPanel extends Composite {
+public class HistoryComposite extends Composite {
 
 	private static final String CLEAR = "Clear";
 	private List listResults;
 	private Button btnClear;
 	
-	public HistoryPanel(Composite parent) {
+	public HistoryComposite(Composite parent) {
 		super(parent, SWT.NONE);
 		createContent(parent);
 	}
