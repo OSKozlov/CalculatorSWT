@@ -4,9 +4,8 @@ import java.util.EventObject;
 
 import com.lux.calculator.operation.MathOperationType;
 
+@SuppressWarnings("serial")
 public class MathOperationEvent extends EventObject {
-
-    private static final long serialVersionUID = 8444593259209900015L;
 
     private double firstOperand;
     private double secondOperand;

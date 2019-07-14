@@ -62,9 +62,7 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
 
     @Override
     public void update(MathOperationEvent event) {
-        System.err.println("MATH EVENT !!!!!!!!!");
         double result = performOperation(event.getFirstOperand(), event.getSecondOperand(), event.getType());
-        System.err.println("result: " + result);
         displayOperationResult(String.valueOf(result));
 
         StringBuilder sb = new StringBuilder();
