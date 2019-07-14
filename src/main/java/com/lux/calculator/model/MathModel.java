@@ -39,7 +39,7 @@ public class MathModel {
         listeners.remove(o);
     }
 
-    public void notifyObservers(MathOperationEvent event) {
+    public void notifyListeners(MathOperationEvent event) {
         for (MathModelChangeListener observer : listeners) {
             observer.update(event);
         }
@@ -69,7 +69,7 @@ public class MathModel {
         if (isMathDataValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
                     Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
-            notifyObservers(event);
+            notifyListeners(event);
         }
     }
 
