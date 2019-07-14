@@ -2,6 +2,7 @@ package com.lux.calculator.app;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -17,8 +18,9 @@ public class CalculatorApp {
         Display display = new Display();
         Shell shell = new Shell(display, SWT.TITLE | SWT.BORDER | SWT.CLOSE | SWT.MIN | SWT.RESIZE);
         shell.setText(TITLE_OF_APP);
-
-        shell.setLayout(new FillLayout());
+        
+        GridLayout layout = new GridLayout(1, false);
+        shell.setLayout(layout);
 
         AbstractCalculator calculator = Calculator.getInstance();
         calculator.runUI(shell);

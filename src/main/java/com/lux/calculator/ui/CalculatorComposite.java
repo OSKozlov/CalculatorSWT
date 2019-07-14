@@ -3,8 +3,8 @@ package com.lux.calculator.ui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 class CalculatorComposite extends Composite {
@@ -25,9 +25,9 @@ class CalculatorComposite extends Composite {
     }
 
     private void createContent(Composite parent) {
-        tabFolder = new CTabFolder(CalculatorComposite.this, SWT.BORDER);
+        tabFolder = new CTabFolder(parent, SWT.BORDER);
 
-        FillLayout layout = new FillLayout();
+        GridLayout layout = new GridLayout(1, false);
         tabFolder.setLayout(layout);
 
         GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
