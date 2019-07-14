@@ -5,9 +5,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.List;
-import org.eclipse.swt.widgets.Listener;
+
+import com.lux.calculator.listener.ClearHistoryButtonListener;
 
 class HistoryComposite extends Composite {
 
@@ -18,6 +18,7 @@ class HistoryComposite extends Composite {
     public HistoryComposite(Composite parent) {
         super(parent, SWT.NONE);
         createContent(parent);
+        initListener();
     }
 
     private void createContent(Composite parent) {
@@ -33,18 +34,10 @@ class HistoryComposite extends Composite {
         btnClear.setText(CLEAR);
         GridData gridData = new GridData(GridData.END, GridData.CENTER, false, false);
         btnClear.setLayoutData(gridData);
+    }
 
-        btnClear.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                switch (event.type) {
-                case SWT.Selection:
-                    listResults.removeAll();
-                }
-            }
-        });
-
+    private void initListener() {
+        btnClear.addListener(SWT.Selection, new ClearHistoryButtonListener());
     }
 
     public void addStatementToHistory(String statement) {

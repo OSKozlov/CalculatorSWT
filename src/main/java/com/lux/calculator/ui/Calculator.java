@@ -91,7 +91,7 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     }
 
     @Override
-    protected void clearOperationHistory() {
+    public void clearOperationHistory() {
         calculatorComposite.getHistoryPanel()
                            .clearHistory();
     }

@@ -33,7 +33,7 @@ public abstract class AbstractCalculator {
 
     protected abstract void displayOperationHistory(String stringExpression);
 
-    protected abstract void clearOperationHistory();
+    public abstract void clearOperationHistory();
 
     public abstract void setFirstOperand(String operand);
 
