@@ -40,8 +40,6 @@ public class MathModel {
     }
 
     public void notifyObservers(MathOperationEvent event) {
-        if (!isValid())
-            return;
         for (MathModelChangeListener observer : listeners) {
             observer.update(event);
         }
