@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.lux.calculator.logic.MathOperationSubtraction;
+import com.lux.calculator.operation.MathOperationSubtraction;
 
 public class MathOperationSubtractionTest {
 

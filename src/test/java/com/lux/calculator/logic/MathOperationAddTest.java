@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import com.lux.calculator.logic.MathOperationAdd;
+import com.lux.calculator.operation.MathOperationAdd;
 
 public class MathOperationAddTest {
 

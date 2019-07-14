@@ -1,7 +1,15 @@
 package com.lux.calculator.listener;
 
-import java.util.Map;
+import com.lux.calculator.event.MathOperationEvent;
 
+/**
+ * This listener listen to math model change
+ * 
+ * @author Oleksandr K
+ *
+ */
 public interface MathModelChangeListener {
-	void update (Map params);
+
+    void update(MathOperationEvent event);
+
 }
