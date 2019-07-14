@@ -70,6 +70,7 @@ class MathOperationComposite extends Composite {
         mathOperationCombo.setItems(items.keySet()
                                          .stream()
                                          .toArray(String[]::new));
+
         GridData gridData = new GridData(GridData.CENTER, GridData.FILL, false, false);
         gridData.widthHint = 50;
         gridData.heightHint = 5;
