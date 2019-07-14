@@ -99,23 +99,33 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     }
 
     @Override
-    protected void setFirstOperand(String operand) {
+    public void setFirstOperand(String operand) {
         mathModel.setFirstOperand(operand);
     }
 
     @Override
-    protected void setSecondOperand(String operand) {
+    public void setSecondOperand(String operand) {
         mathModel.setSecondOperand(operand);
     }
 
     @Override
-    protected void setOperation(String operation) {
+    public void setOperation(String operation) {
         mathModel.setOperation(operation);
     }
 
     @Override
-    protected void setOnFlyMode(boolean isOnFlyMode) {
+    public void setOnFlyMode(boolean isOnFlyMode) {
         mathModel.setOnFlyMode(isOnFlyMode);
+    }
+
+    @Override
+    public boolean isOnFlyMode() {
+        return mathModel.isOnFlyMode();
+    }
+
+    @Override
+    public void runCalculation() {
+        mathModel.runCalculation();
     }
 
 }

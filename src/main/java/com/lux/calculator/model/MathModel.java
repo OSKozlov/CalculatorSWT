@@ -15,7 +15,6 @@ public class MathModel {
     private String secondOperand;
 
     private boolean isOnFlyMode;
-    private boolean isPressedBtnCalculate;
 
     private String operation;
 
@@ -89,8 +88,7 @@ public class MathModel {
         }
     }
 
-    public void setPressedBtnCalculate(boolean isPressedBtnCalculate) {
-        this.isPressedBtnCalculate = isPressedBtnCalculate;
+    public void runCalculation() {
         if (isValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
                     Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));

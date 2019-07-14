@@ -35,13 +35,17 @@ public abstract class AbstractCalculator {
 
     protected abstract void clearOperationHistory();
 
-    protected abstract void setFirstOperand(String operand);
+    public abstract void setFirstOperand(String operand);
 
-    protected abstract void setSecondOperand(String operand);
+    public abstract void setSecondOperand(String operand);
 
-    protected abstract void setOperation(String operation);
+    public abstract void setOperation(String operation);
 
-    protected abstract void setOnFlyMode(boolean isOnFlyMode);
+    public abstract void setOnFlyMode(boolean isOnFlyMode);
+
+    public abstract boolean isOnFlyMode();
+
+    public abstract void runCalculation();
 
     protected Map<String, MathOperation> creatMainOperationsMap() {
         mathOperationsMap = new HashMap<>();

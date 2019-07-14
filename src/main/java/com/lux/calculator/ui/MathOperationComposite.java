@@ -4,20 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
+import com.lux.calculator.listener.CalculateButtonListener;
+import com.lux.calculator.listener.CheckBoxSelectionListener;
+import com.lux.calculator.listener.FirstOperandModifyListener;
+import com.lux.calculator.listener.MathOperatorListener;
+import com.lux.calculator.listener.OperandVerifyListener;
+import com.lux.calculator.listener.SecondOperandModifyListener;
 import com.lux.calculator.operation.MathOperationType;
 
 class MathOperationComposite extends Composite {
@@ -46,14 +46,12 @@ class MathOperationComposite extends Composite {
 
     private Button checkBoxOnFlyMode;
     private Button btnCalculate;
-    
-    private Calculator calculator = Calculator.getInstance();
 
     public MathOperationComposite(Composite parent) {
         super(parent, SWT.NONE);
 
         createContent(parent);
-        initActions();
+        initListeners();
     }
 
     private void createContent(Composite parent) {
@@ -70,8 +68,8 @@ class MathOperationComposite extends Composite {
 
         mathOperationCombo = new Combo(this, SWT.DROP_DOWN);
         mathOperationCombo.setItems(items.keySet()
-                                   .stream()
-                                   .toArray(String[]::new));
+                                         .stream()
+                                         .toArray(String[]::new));
         GridData gridData = new GridData(GridData.CENTER, GridData.FILL, false, false);
         gridData.widthHint = 50;
         gridData.heightHint = 5;
@@ -106,14 +104,14 @@ class MathOperationComposite extends Composite {
         textResult.setLayoutData(gridData);
     }
 
-    private void initActions() {
-        firstNumber.addModifyListener(new ModifyListenerForFirstOperand());
-        firstNumber.addListener(SWT.Verify, new VerifyListenerForOperand());
-        secondNumber.addModifyListener(new ModifyListenerForSecondOperand());
-        secondNumber.addListener(SWT.Verify, new VerifyListenerForOperand());
-        mathOperationCombo.addSelectionListener(new SelectionAdapterForMathOperator());
-        checkBoxOnFlyMode.addSelectionListener(new SelectionAdapterForCheckBox());
-        btnCalculate.addListener(SWT.Selection, new ListenerForButtonCalculate());
+    private void initListeners() {
+        firstNumber.addModifyListener(new FirstOperandModifyListener());
+        firstNumber.addListener(SWT.Verify, new OperandVerifyListener());
+        secondNumber.addModifyListener(new SecondOperandModifyListener());
+        secondNumber.addListener(SWT.Verify, new OperandVerifyListener());
+        mathOperationCombo.addSelectionListener(new MathOperatorListener());
+        checkBoxOnFlyMode.addSelectionListener(new CheckBoxSelectionListener());
+        btnCalculate.addListener(SWT.Selection, new CalculateButtonListener());
     }
 
     /**
@@ -125,103 +123,4 @@ class MathOperationComposite extends Composite {
         textResult.setText(text);
     }
 
-    private boolean verifyInputNumber(Event e) {
-        Text widget = (Text) e.widget;
-        String wholNumber = widget.getText();
-        String input = e.text;
-        if (e.character == 8) {
-            return true;
-        } else if ((wholNumber.length() == 0) && input.equals("-")) {
-            return true;
-        } else if (wholNumber.length() != 0 && !pointIsAdded(wholNumber) && input.equals(".")) {
-            return true;
-        } else {
-            try {
-                double digit = Double.parseDouble(input);
-            } catch (NumberFormatException nfe) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private boolean pointIsAdded(String number) {
-        return number.indexOf(".") >= 0;
-    }
-
-    private class VerifyListenerForOperand implements Listener {
-        @Override
-        public void handleEvent(Event e) {
-            if (verifyInputNumber(e) || e.character == 8) {
-                System.out.println("All is good");
-            } else {
-                e.doit = false;
-                System.out.println("incorrect input");
-            }
-        }
-    }
-
-    private class ModifyListenerForFirstOperand implements ModifyListener {
-        @Override
-        public void modifyText(ModifyEvent e) {
-            Text widget = (Text) e.widget;
-            String operand = widget.getText();
-            if (checkBoxOnFlyMode.getSelection()) {
-                System.out.println("Modify listener!!");
-                calculator.setFirstOperand(operand);
-            }
-        }
-    }
-
-    private class ModifyListenerForSecondOperand implements ModifyListener {
-        @Override
-        public void modifyText(ModifyEvent e) {
-            Text widget = (Text) e.widget;
-            String operand = widget.getText();
-            if (checkBoxOnFlyMode.getSelection()) {
-                System.out.println("Modify listener!!");
-                calculator.setSecondOperand(operand);
-            }
-        }
-    }
-
-    private class SelectionAdapterForMathOperator extends SelectionAdapter {
-
-        @Override
-        public void widgetSelected(SelectionEvent e) {
-            if (checkBoxOnFlyMode.getSelection()) {
-                calculator.setOperation(items.get(mathOperationCombo.getText()));
-            }
-        }
-    }
-
-    private class SelectionAdapterForCheckBox extends SelectionAdapter {
-
-        @Override
-        public void widgetSelected(SelectionEvent e) {
-            calculator.setOnFlyMode(checkBoxOnFlyMode.getSelection());
-            if (checkBoxOnFlyMode.getSelection()) {
-                btnCalculate.setEnabled(false);
-            } else {
-                btnCalculate.setEnabled(true);
-            }
-        }
-    }
-
-    private class ListenerForButtonCalculate implements Listener {
-
-        @Override
-        public void handleEvent(Event event) {
-            switch (event.type) {
-            case SWT.Selection:
-
-                calculator.setFirstOperand(firstNumber.getText());
-                calculator.setSecondOperand(secondNumber.getText());
-                calculator.setOperation(items.get(mathOperationCombo.getText()));
-
-                break;
-            }
-        }
-    }
 }
