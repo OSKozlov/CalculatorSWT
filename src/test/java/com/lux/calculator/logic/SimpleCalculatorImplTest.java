@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.lux.calculator.operation.MathOperationType;
 import com.lux.calculator.ui.Calculator;
 
 public class SimpleCalculatorImplTest {
@@ -13,7 +14,7 @@ public class SimpleCalculatorImplTest {
 		double firstNumber = 4;
 		double secondNumber = 5;
 		final double delta = 0.0001;
-		String mathOperator1 = "+";
+		MathOperationType mathOperator1 = MathOperationType.ADDITION;
 //		String mathOperator2 = "-";
 //		String mathOperator3 = "/";
 //		String mathOperator4 = "*";
@@ -23,9 +24,9 @@ public class SimpleCalculatorImplTest {
 //		double expResult3 = 0.8;
 //		double expResult4 = 20;
 		
-		Calculator calc = new Calculator();
+		Calculator calc = Calculator.getInstance();
 		
-		double result1 = calc.doCalculation(firstNumber, secondNumber, mathOperator1);
+		double result1 = calc.performOperation(firstNumber, secondNumber, mathOperator1);
 //		double result2 = calc.makeCalculation(firstNumber, secondNumber, mathOperator2);
 //		double result3 = calc.makeCalculation(firstNumber, secondNumber, mathOperator3);
 //		double result4 = calc.makeCalculation(firstNumber, secondNumber, mathOperator4);
