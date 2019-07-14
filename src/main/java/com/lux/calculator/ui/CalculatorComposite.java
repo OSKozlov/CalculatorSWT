@@ -25,14 +25,10 @@ class CalculatorComposite extends Composite {
     }
 
     private void createContent(Composite parent) {
+
         tabFolder = new CTabFolder(parent, SWT.BORDER);
-
-        GridLayout layout = new GridLayout(1, false);
-        tabFolder.setLayout(layout);
-
-        GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-        tabFolder.setLayoutData(gridData);
-        tabFolder.setSize(280, 280);
+        tabFolder.setLayout(new GridLayout(1, true));
+        tabFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
 
         mathOperationPanel = new MathOperationComposite(tabFolder);
 
@@ -45,6 +41,8 @@ class CalculatorComposite extends Composite {
         tabItemHistory = new CTabItem(tabFolder, SWT.NONE);
         tabItemHistory.setText(TITLE_HISTORY);
         tabItemHistory.setControl(historyPanel);
+
+        tabFolder.pack();
     }
 
     public MathOperationComposite getMathOperationPanel() {
