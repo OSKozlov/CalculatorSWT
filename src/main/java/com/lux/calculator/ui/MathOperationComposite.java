@@ -18,7 +18,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import com.lux.calculator.model.MathModel;
 import com.lux.calculator.operation.MathOperationType;
 
 class MathOperationComposite extends Composite {
@@ -47,9 +46,8 @@ class MathOperationComposite extends Composite {
 
     private Button checkBoxOnFlyMode;
     private Button btnCalculate;
-
-    private MathModel mathModel = Calculator.getInstance()
-                                            .getMathModel();
+    
+    private Calculator calculator = Calculator.getInstance();
 
     public MathOperationComposite(Composite parent) {
         super(parent, SWT.NONE);
@@ -171,7 +169,7 @@ class MathOperationComposite extends Composite {
             String operand = widget.getText();
             if (checkBoxOnFlyMode.getSelection()) {
                 System.out.println("Modify listener!!");
-                mathModel.setFirstOperand(operand);
+                calculator.setFirstOperand(operand);
             }
         }
     }
@@ -183,7 +181,7 @@ class MathOperationComposite extends Composite {
             String operand = widget.getText();
             if (checkBoxOnFlyMode.getSelection()) {
                 System.out.println("Modify listener!!");
-                mathModel.setSecondOperand(operand);
+                calculator.setSecondOperand(operand);
             }
         }
     }
@@ -193,7 +191,7 @@ class MathOperationComposite extends Composite {
         @Override
         public void widgetSelected(SelectionEvent e) {
             if (checkBoxOnFlyMode.getSelection()) {
-                mathModel.setSign(items.get(mathOperationCombo.getText()));
+                calculator.setOperation(items.get(mathOperationCombo.getText()));
             }
         }
     }
@@ -202,7 +200,7 @@ class MathOperationComposite extends Composite {
 
         @Override
         public void widgetSelected(SelectionEvent e) {
-            mathModel.setOnFlyMode(checkBoxOnFlyMode.getSelection());
+            calculator.setOnFlyMode(checkBoxOnFlyMode.getSelection());
             if (checkBoxOnFlyMode.getSelection()) {
                 btnCalculate.setEnabled(false);
             } else {
@@ -218,9 +216,9 @@ class MathOperationComposite extends Composite {
             switch (event.type) {
             case SWT.Selection:
 
-                mathModel.setFirstOperand(firstNumber.getText());
-                mathModel.setSecondOperand(secondNumber.getText());
-                mathModel.setSign(items.get(mathOperationCombo.getText()));
+                calculator.setFirstOperand(firstNumber.getText());
+                calculator.setSecondOperand(secondNumber.getText());
+                calculator.setOperation(items.get(mathOperationCombo.getText()));
 
                 break;
             }

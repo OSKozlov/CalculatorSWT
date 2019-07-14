@@ -17,7 +17,7 @@ public class MathModel {
     private boolean isOnFlyMode;
     private boolean isPressedBtnCalculate;
 
-    private String sign;
+    private String operation;
 
     private static MathModel instance;
 
@@ -52,7 +52,7 @@ public class MathModel {
         this.firstOperand = firstOperand;
         if (isValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(sign));
+                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
             notifyObservers(event);
         }
     }
@@ -61,13 +61,13 @@ public class MathModel {
         this.secondOperand = secondOperand;
         if (isValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(sign));
+                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
             notifyObservers(event);
         }
     }
 
-    public void setSign(String sign) {
-        this.sign = sign;
+    public void setOperation(String sign) {
+        this.operation = sign;
         if (isValid()) {
             System.err.println("### MathOperationType.valueOf(sign) = " + MathOperationType.valueOf(sign));
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
@@ -84,7 +84,7 @@ public class MathModel {
         this.isOnFlyMode = isOnFlyMode;
         if (isValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(sign));
+                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
             notifyObservers(event);
         }
     }
@@ -93,13 +93,13 @@ public class MathModel {
         this.isPressedBtnCalculate = isPressedBtnCalculate;
         if (isValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(sign));
+                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
             notifyObservers(event);
         }
     }
 
     private boolean isValid() {
-        if (firstOperand != null && secondOperand != null && sign != null) {
+        if (firstOperand != null && secondOperand != null && operation != null) {
             return true;
         } else
             return false;

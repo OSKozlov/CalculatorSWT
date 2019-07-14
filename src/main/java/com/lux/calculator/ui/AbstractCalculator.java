@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.eclipse.swt.widgets.Shell;
 
-import com.lux.calculator.model.MathModel;
 import com.lux.calculator.operation.MathOperation;
 import com.lux.calculator.operation.MathOperationAdd;
 import com.lux.calculator.operation.MathOperationDevision;
@@ -28,8 +27,6 @@ public abstract class AbstractCalculator {
      */
     protected abstract double performOperation(double firstNumber, double secondNumber, MathOperationType sign);
 
-    protected abstract MathModel getMathModel();
-
     protected abstract void creatOperationsMap();
 
     protected abstract void displayOperationResult(String result);
@@ -37,6 +34,14 @@ public abstract class AbstractCalculator {
     protected abstract void displayOperationHistory(String stringExpression);
 
     protected abstract void clearOperationHistory();
+
+    protected abstract void setFirstOperand(String operand);
+
+    protected abstract void setSecondOperand(String operand);
+
+    protected abstract void setOperation(String operation);
+
+    protected abstract void setOnFlyMode(boolean isOnFlyMode);
 
     protected Map<String, MathOperation> creatMainOperationsMap() {
         mathOperationsMap = new HashMap<>();

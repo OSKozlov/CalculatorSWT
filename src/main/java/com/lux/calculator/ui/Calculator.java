@@ -81,11 +81,6 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     }
 
     @Override
-    public MathModel getMathModel() {
-        return mathModel;
-    }
-
-    @Override
     protected void displayOperationResult(String result) {
         calculatorComposite.getMathOperationPanel()
                            .updateResultField(result);
@@ -101,6 +96,26 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     protected void clearOperationHistory() {
         calculatorComposite.getHistoryPanel()
                            .clearHistory();
+    }
+
+    @Override
+    protected void setFirstOperand(String operand) {
+        mathModel.setFirstOperand(operand);
+    }
+
+    @Override
+    protected void setSecondOperand(String operand) {
+        mathModel.setSecondOperand(operand);
+    }
+
+    @Override
+    protected void setOperation(String operation) {
+        mathModel.setOperation(operation);
+    }
+
+    @Override
+    protected void setOnFlyMode(boolean isOnFlyMode) {
+        mathModel.setOnFlyMode(isOnFlyMode);
     }
 
 }
