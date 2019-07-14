@@ -2,10 +2,10 @@ package com.lux.calculator.operation;
 
 public enum MathOperationType {
 
-    ADDITION("Addition", "+"), 
-    SUBTRACTION("Subtraction", "-"),
-    DIVISION("Division", "/"),
-    MULTIPLICATION("Multiplication", "*");
+    ADDITION("ADDITION", "+"), 
+    SUBTRACTION("SUBTRACTION", "-"),
+    DIVISION("DIVISION", "/"),
+    MULTIPLICATION("MULTIPLICATION", "*");
 
     private String value;
     private String operationSign;

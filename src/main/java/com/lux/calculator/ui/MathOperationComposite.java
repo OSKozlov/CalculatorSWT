@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Text;
 
 import com.lux.calculator.app.Calculator;
 import com.lux.calculator.model.MathModel;
+import com.lux.calculator.operation.MathOperationType;
 
 public class MathOperationComposite extends Composite {
 
@@ -29,10 +30,10 @@ public class MathOperationComposite extends Composite {
 
     private static final Map<String, String> items = new HashMap() {
         {
-            put("+", "ADDITION");
-            put("-", "SUBTRACTION");
-            put("*", "MULTIPLICATION");
-            put("/", "DIVISION");
+            put(MathOperationType.ADDITION.getOperationSign(), MathOperationType.ADDITION.getValue());
+            put(MathOperationType.SUBTRACTION.getOperationSign(), MathOperationType.SUBTRACTION.getValue());
+            put(MathOperationType.MULTIPLICATION.getOperationSign(), MathOperationType.MULTIPLICATION.getValue());
+            put(MathOperationType.DIVISION.getOperationSign(), MathOperationType.DIVISION.getValue());
         }
     };
 
@@ -43,7 +44,7 @@ public class MathOperationComposite extends Composite {
     private Label labelCalcOnTheFly;
     private Label labelResult;
 
-    private Combo mathOperator;
+    private Combo mathOperationCombo;
 
     private Button checkBoxOnFlyMode;
     private Button btnCalculate;
@@ -70,15 +71,15 @@ public class MathOperationComposite extends Composite {
 
         firstNumber = new Text(this, SWT.BORDER);
 
-        mathOperator = new Combo(this, SWT.DROP_DOWN);
-        mathOperator.setItems(items.keySet()
+        mathOperationCombo = new Combo(this, SWT.DROP_DOWN);
+        mathOperationCombo.setItems(items.keySet()
                                    .stream()
                                    .toArray(String[]::new));
         GridData gridData = new GridData(GridData.CENTER, GridData.FILL, false, false);
         gridData.widthHint = 50;
         gridData.heightHint = 5;
         gridData.minimumHeight = 200;
-        mathOperator.setLayoutData(gridData);
+        mathOperationCombo.setLayoutData(gridData);
 
         secondNumber = new Text(this, SWT.BORDER);
 
@@ -113,7 +114,7 @@ public class MathOperationComposite extends Composite {
         firstNumber.addListener(SWT.Verify, new VerifyListenerForOperand());
         secondNumber.addModifyListener(new ModifyListenerForSecondOperand());
         secondNumber.addListener(SWT.Verify, new VerifyListenerForOperand());
-        mathOperator.addSelectionListener(new SelectionAdapterForMathOperator());
+        mathOperationCombo.addSelectionListener(new SelectionAdapterForMathOperator());
         checkBoxOnFlyMode.addSelectionListener(new SelectionAdapterForCheckBox());
         btnCalculate.addListener(SWT.Selection, new ListenerForButtonCalculate());
     }
@@ -193,7 +194,7 @@ public class MathOperationComposite extends Composite {
         @Override
         public void widgetSelected(SelectionEvent e) {
             if (checkBoxOnFlyMode.getSelection()) {
-                mathModel.setSign(items.get(mathOperator.getText()));
+                mathModel.setSign(items.get(mathOperationCombo.getText()));
             }
         }
     }
@@ -220,7 +221,7 @@ public class MathOperationComposite extends Composite {
 
                 mathModel.setFirstOperand(firstNumber.getText());
                 mathModel.setSecondOperand(secondNumber.getText());
-                mathModel.setSign(items.get(mathOperator.getText()));
+                mathModel.setSign(items.get(mathOperationCombo.getText()));
 
                 break;
             }

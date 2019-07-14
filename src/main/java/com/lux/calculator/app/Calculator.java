@@ -1,8 +1,5 @@
 package com.lux.calculator.app;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.swt.widgets.Shell;
 
 import com.lux.calculator.event.MathOperationEvent;
