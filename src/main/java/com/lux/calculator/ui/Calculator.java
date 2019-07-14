@@ -1,11 +1,20 @@
 package com.lux.calculator.ui;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.eclipse.swt.widgets.Shell;
 
 import com.lux.calculator.event.MathOperationEvent;
 import com.lux.calculator.listener.MathModelChangeListener;
 import com.lux.calculator.model.MathModel;
 import com.lux.calculator.operation.MathOperation;
+import com.lux.calculator.operation.MathOperationAddition;
+import com.lux.calculator.operation.MathOperationDevision;
+import com.lux.calculator.operation.MathOperationMultiplication;
+import com.lux.calculator.operation.MathOperationSubtraction;
 import com.lux.calculator.operation.MathOperationType;
 
 public class Calculator extends AbstractCalculator implements MathModelChangeListener {
@@ -13,11 +22,20 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     private MathModel mathModel;
     private CalculatorComposite calculatorComposite;
 
+    protected Map<String, MathOperation> mathOperationsMap = new HashMap<>();
+
     private static Calculator instance;
 
-    private Calculator() {
-        creatOperationsMap();
+    private Logger logger = Logger.getLogger(Calculator.class.getName());
 
+    {
+        mathOperationsMap.put(MathOperationType.ADDITION.getValue(), new MathOperationAddition());
+        mathOperationsMap.put(MathOperationType.SUBTRACTION.getValue(), new MathOperationSubtraction());
+        mathOperationsMap.put(MathOperationType.DIVISION.getValue(), new MathOperationDevision());
+        mathOperationsMap.put(MathOperationType.MULTIPLICATION.getValue(), new MathOperationMultiplication());
+    }
+
+    private Calculator() {
         init();
         initListeners();
     }
@@ -44,15 +62,10 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
         if (mathOperationsMap.containsKey(mathOperator.getValue())) {
             mathOperation = mathOperationsMap.get(mathOperator.getValue());
         } else {
-            System.out.println("Invalid sign");
+            logger.log(Level.WARNING, "User input an invalid sign");
         }
 
         return mathOperation.calculateResult(firstNumber, secondNumber);
-    }
-
-    @Override
-    public void creatOperationsMap() {
-        mathOperationsMap = creatMainOperationsMap();
     }
 
     @Override
@@ -62,20 +75,25 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
 
     @Override
     public void update(MathOperationEvent event) {
-        double result = performOperation(event.getFirstOperand(), event.getSecondOperand(), event.getType());
+
+        double firstOp = event.getFirstOperand();
+        double secondOp = event.getSecondOperand();
+        MathOperationType mathOpType = event.getType();
+
+        double result = performOperation(firstOp, secondOp, mathOpType);
+
         displayOperationResult(String.valueOf(result));
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(event.getFirstOperand());
-        sb.append(" ");
-        sb.append(event.getType()
-                       .getOperationSign());
-        sb.append(" ");
-        sb.append(event.getSecondOperand());
-        sb.append("=");
-        sb.append(result);
+        String expession = new StringBuilder().append(firstOp)
+                                              .append(" ")
+                                              .append(mathOpType.getOperationSign())
+                                              .append(" ")
+                                              .append(secondOp)
+                                              .append("=")
+                                              .append(result)
+                                              .toString();
 
-        displayOperationHistory(sb.toString());
+        displayExpressionInHistory(expession);
     }
 
     @Override
@@ -85,7 +103,7 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     }
 
     @Override
-    protected void displayOperationHistory(String stringExpression) {
+    protected void displayExpressionInHistory(String stringExpression) {
         calculatorComposite.getHistoryPanel()
                            .addStatementToHistory(stringExpression);
     }
