@@ -1,22 +1,25 @@
 package com.lux.calculator.listener;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 public class OperandVerifyListener implements Listener {
 
+    private Logger logger = Logger.getLogger(OperandVerifyListener.class.getName());
+
     @Override
     public void handleEvent(Event e) {
-        if (verifyInputNumber(e) || e.character == 8) {
-            System.out.println("All is good");
-        } else {
+        if (!checkInputNumber(e)) {
             e.doit = false;
-            System.out.println("incorrect input");
+            logger.log(Level.WARNING, "Incorrect input");
         }
     }
 
-    private boolean verifyInputNumber(Event e) {
+    private boolean checkInputNumber(Event e) {
         Text widget = (Text) e.widget;
         String wholNumber = widget.getText();
         String input = e.text;
@@ -40,4 +43,5 @@ public class OperandVerifyListener implements Listener {
     private boolean pointIsAdded(String number) {
         return number.indexOf(".") >= 0;
     }
+
 }

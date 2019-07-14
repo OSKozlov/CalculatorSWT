@@ -27,10 +27,10 @@ public class MathOperatorListener extends SelectionAdapter {
     public void widgetSelected(SelectionEvent e) {
         if (e.widget instanceof Combo) {
             Combo combo = (Combo) e.widget;
-
-//            if (calculator.isOnFlyMode()) {
-                calculator.setOperation(items.get(combo.getText()));
-//            }
+            calculator.setOperation(items.get(combo.getText()));
+            if (calculator.isOnFlyMode()) {
+                calculator.runCalculation();
+            }
         }
     }
 }

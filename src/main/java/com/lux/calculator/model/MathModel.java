@@ -14,7 +14,7 @@ public class MathModel {
     private String firstOperand;
     private String secondOperand;
 
-    private boolean isOnFlyMode;
+    private boolean isOnFlyMode = false;
 
     private String operation;
 
@@ -49,30 +49,14 @@ public class MathModel {
 
     public void setFirstOperand(String firstOperand) {
         this.firstOperand = firstOperand;
-        if (isValid()) {
-            MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
-            notifyObservers(event);
-        }
     }
 
     public void setSecondOperand(String secondOperand) {
         this.secondOperand = secondOperand;
-        if (isValid()) {
-            MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
-            notifyObservers(event);
-        }
     }
 
     public void setOperation(String sign) {
         this.operation = sign;
-        if (isValid()) {
-            System.err.println("### MathOperationType.valueOf(sign) = " + MathOperationType.valueOf(sign));
-            MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(sign));
-            notifyObservers(event);
-        }
     }
 
     public boolean isOnFlyMode() {
@@ -81,11 +65,6 @@ public class MathModel {
 
     public void setOnFlyMode(boolean isOnFlyMode) {
         this.isOnFlyMode = isOnFlyMode;
-        if (isValid()) {
-            MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
-                    Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
-            notifyObservers(event);
-        }
     }
 
     public void runCalculation() {

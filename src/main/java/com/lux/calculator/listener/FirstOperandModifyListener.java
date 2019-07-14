@@ -14,8 +14,9 @@ public class FirstOperandModifyListener implements ModifyListener {
     public void modifyText(ModifyEvent e) {
         Text widget = (Text) e.widget;
         String operand = widget.getText();
-//        if (calculator.isOnFlyMode()) {
-            calculator.setFirstOperand(operand);
-//        }
+        calculator.setFirstOperand(operand);
+        if (calculator.isOnFlyMode()) {
+            calculator.runCalculation();
+        }
     }
 }

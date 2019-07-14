@@ -14,8 +14,9 @@ public class SecondOperandModifyListener implements ModifyListener {
     public void modifyText(ModifyEvent e) {
         Text widget = (Text) e.widget;
         String operand = widget.getText();
-//        if (calculator.isOnFlyMode()) {
-            calculator.setSecondOperand(operand);
-//        }
+        calculator.setSecondOperand(operand);
+        if (calculator.isOnFlyMode()) {
+            calculator.runCalculation();
+        }
     }
 }
