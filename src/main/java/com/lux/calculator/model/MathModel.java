@@ -66,14 +66,14 @@ public class MathModel {
     }
 
     public void runCalculation() {
-        if (isValid()) {
+        if (isMathDataValid()) {
             MathOperationEvent event = new MathOperationEvent(this, Double.parseDouble(firstOperand),
                     Double.parseDouble(secondOperand), MathOperationType.valueOf(operation));
             notifyObservers(event);
         }
     }
 
-    private boolean isValid() {
+    public boolean isMathDataValid() {
         if (firstOperand != null && secondOperand != null && operation != null) {
             return true;
         } else

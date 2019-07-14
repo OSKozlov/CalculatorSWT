@@ -1,5 +1,7 @@
 package com.lux.calculator.listener;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
@@ -11,6 +13,14 @@ public class CalculateButtonListener implements Listener {
 
     @Override
     public void handleEvent(Event event) {
-        calculator.runCalculation();
+        if (event.widget instanceof Button) {
+            Button button = (Button) event.widget;
+            if (calculator.isDataFieldsValid()) {
+                calculator.runCalculation();
+            } else {
+                calculator.displayMessage(button.getShell(), SWT.ICON_WARNING, "Warning",
+                        "Please fill operation fields");
+            }
+        }
     }
 }

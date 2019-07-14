@@ -81,4 +81,14 @@ public abstract class AbstractCalculator {
      */
     protected abstract void runCalculation();
 
+    /**
+     * This method check if fields are empty
+     */
+    protected abstract boolean isDataFieldsValid();
+
+    /**
+     * This method display warning message
+     */
+    protected abstract void displayMessage(Shell shell, int style, String title, String msg);
+
 }

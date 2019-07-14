@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 import com.lux.calculator.event.MathOperationEvent;
@@ -142,6 +143,19 @@ public class Calculator extends AbstractCalculator implements MathModelChangeLis
     @Override
     public void runCalculation() {
         mathModel.runCalculation();
+    }
+
+    @Override
+    public boolean isDataFieldsValid() {
+        return mathModel.isMathDataValid();
+    }
+
+    @Override
+    public void displayMessage(Shell shell, int style, String title, String msg) {
+        MessageBox messageBox = new MessageBox(shell, style);
+        messageBox.setText(title);
+        messageBox.setMessage(msg);
+        messageBox.open();
     }
 
 }
