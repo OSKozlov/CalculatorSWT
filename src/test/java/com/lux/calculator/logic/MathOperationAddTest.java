@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import com.lux.calculator.operation.MathOperationAdd;
+import com.lux.calculator.operation.MathOperationAddition;
 
 public class MathOperationAddTest {
 
@@ -16,7 +16,7 @@ public class MathOperationAddTest {
 		double firstNumber = 2;
 		double secondNumber = 1;
  		double expResult = 3;
-		MathOperationAdd instance = new MathOperationAdd();
+		MathOperationAddition instance = new MathOperationAddition();
 		double result = instance.calculateResult(firstNumber, secondNumber);
 		assertEquals(expResult, result, 0.0001);
 	}

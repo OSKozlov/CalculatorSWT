@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eclipse.swt.widgets.Shell;
 
 import com.lux.calculator.operation.MathOperation;
-import com.lux.calculator.operation.MathOperationAdd;
+import com.lux.calculator.operation.MathOperationAddition;
 import com.lux.calculator.operation.MathOperationDevision;
 import com.lux.calculator.operation.MathOperationMultiplication;
 import com.lux.calculator.operation.MathOperationSubtraction;
@@ -45,7 +45,7 @@ public abstract class AbstractCalculator {
 
     protected Map<String, MathOperation> creatMainOperationsMap() {
         mathOperationsMap = new HashMap<>();
-        mathOperationsMap.put(MathOperationType.ADDITION.getValue(), new MathOperationAdd());
+        mathOperationsMap.put(MathOperationType.ADDITION.getValue(), new MathOperationAddition());
         mathOperationsMap.put(MathOperationType.SUBTRACTION.getValue(), new MathOperationSubtraction());
         mathOperationsMap.put(MathOperationType.DIVISION.getValue(), new MathOperationDevision());
         mathOperationsMap.put(MathOperationType.MULTIPLICATION.getValue(), new MathOperationMultiplication());
