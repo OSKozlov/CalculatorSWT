@@ -9,7 +9,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 
-public class HistoryComposite extends Composite {
+class HistoryComposite extends Composite {
 
     private static final String CLEAR = "Clear";
     private List listResults;

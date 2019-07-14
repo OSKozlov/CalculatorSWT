@@ -18,11 +18,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import com.lux.calculator.app.Calculator;
 import com.lux.calculator.model.MathModel;
 import com.lux.calculator.operation.MathOperationType;
 
-public class MathOperationComposite extends Composite {
+class MathOperationComposite extends Composite {
 
     private static final String RESULT = "Result:";
     private static final String CALCULATE = "Calculate";

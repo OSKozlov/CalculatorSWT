@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.lux.calculator.app.Calculator;
+import com.lux.calculator.ui.Calculator;
 
 public class SimpleCalculatorImplTest {
 

@@ -1,4 +1,4 @@
-package com.lux.calculator.app;
+package com.lux.calculator.ui;
 
 import org.eclipse.swt.widgets.Shell;
 
@@ -7,7 +7,6 @@ import com.lux.calculator.listener.MathModelChangeListener;
 import com.lux.calculator.model.MathModel;
 import com.lux.calculator.operation.MathOperation;
 import com.lux.calculator.operation.MathOperationType;
-import com.lux.calculator.ui.CalculatorComposite;
 
 public class Calculator extends AbstractCalculator implements MathModelChangeListener {
 

@@ -1,4 +1,4 @@
-package com.lux.calculator.app;
+package com.lux.calculator.ui;
 
 import java.util.HashMap;
 import java.util.Map;

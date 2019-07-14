@@ -5,6 +5,9 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import com.lux.calculator.ui.AbstractCalculator;
+import com.lux.calculator.ui.Calculator;
+
 public class CalculatorApp {
 
     private static final String TITLE_OF_APP = "SWT Calculator";

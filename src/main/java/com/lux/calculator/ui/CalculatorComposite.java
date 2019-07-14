@@ -7,7 +7,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
-public class CalculatorComposite extends Composite {
+class CalculatorComposite extends Composite {
 
     private static final String TITLE_CALCULATOR = "Calculator";
     private static final String TITLE_HISTORY = "History";
