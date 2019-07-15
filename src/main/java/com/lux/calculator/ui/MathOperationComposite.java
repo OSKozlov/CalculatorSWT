@@ -20,6 +20,7 @@ import com.lux.calculator.listener.OperandVerifyListener;
 import com.lux.calculator.listener.SecondOperandModifyListener;
 import com.lux.calculator.operation.MathOperationType;
 
+@SuppressWarnings("unchecked")
 class MathOperationComposite extends Composite {
 
     private static final String RESULT = "Result:";

@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Combo;
 import com.lux.calculator.operation.MathOperationType;
 import com.lux.calculator.ui.Calculator;
 
+@SuppressWarnings("unchecked")
 public class MathOperatorListener extends SelectionAdapter {
 
     private Calculator calculator = Calculator.getInstance();
