@@ -3,6 +3,7 @@ package com.lux.calculator.listener;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
@@ -29,7 +30,12 @@ public class MathOperatorListener extends SelectionAdapter {
             Combo combo = (Combo) e.widget;
             calculator.setOperation(items.get(combo.getText()));
             if (calculator.isOnFlyMode()) {
-                calculator.runCalculation();
+                if (calculator.isDataFieldsValid()) {
+                    calculator.runCalculation();
+                } else {
+                    calculator.displayMessage(combo.getShell(), SWT.ICON_WARNING, "Warning",
+                            "Please fill operation fields");
+                }
             }
         }
     }

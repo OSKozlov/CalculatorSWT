@@ -1,5 +1,6 @@
 package com.lux.calculator.listener;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
@@ -16,7 +17,12 @@ public class SecondOperandModifyListener implements ModifyListener {
         String operand = widget.getText();
         calculator.setSecondOperand(operand);
         if (calculator.isOnFlyMode()) {
-            calculator.runCalculation();
+            if (calculator.isDataFieldsValid()) {
+                calculator.runCalculation();
+            } else {
+                calculator.displayMessage(widget.getShell(), SWT.ICON_WARNING, "Warning",
+                        "Please fill operation fields");
+            }
         }
     }
 }

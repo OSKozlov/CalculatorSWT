@@ -74,7 +74,8 @@ public class MathModel {
     }
 
     public boolean isMathDataValid() {
-        if (firstOperand != null && secondOperand != null && operation != null) {
+        if (firstOperand != null && secondOperand != null && operation != null && !firstOperand.isEmpty()
+                && !secondOperand.isEmpty()) {
             return true;
         } else
             return false;
